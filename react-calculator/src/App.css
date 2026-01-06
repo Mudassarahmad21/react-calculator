@@ -3,13 +3,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* Changed to min-height for better scrolling on small devices */
+  margin: 0;
   font-family: "Segoe UI", sans-serif;
 }
 
 .calculator {
   background: #1e1e1e;
-  width: 320px;
+  width: 90%; /* Responsive width */
+  max-width: 320px; /* Limits size on desktop */
   border-radius: 16px;
   padding: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -23,6 +25,8 @@ body {
   border-radius: 10px;
   text-align: right;
   margin-bottom: 12px;
+  word-wrap: break-word; /* Prevents long numbers from overflowing */
+  overflow: hidden;
 }
 
 .grid {
@@ -39,6 +43,7 @@ body {
   cursor: pointer;
   background: #2a2a2a;
   color: white;
+  transition: background 0.2s ease;
 }
 
 .btn:hover {
@@ -60,4 +65,20 @@ body {
 
 .zero {
   grid-column: span 2;
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 350px) {
+  .calculator {
+    padding: 10px;
+  }
+  
+  .btn {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .display {
+    font-size: 1.8rem;
+  }
 }
